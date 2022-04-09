@@ -12,10 +12,11 @@ if ($PythonCmdName -ne 'python' -and $PythonCmdName -ne 'python3') {
 }
 
 $file = '.\outdated.txt'
+$bakFile = '.\outdated.txt.bak'
 
-Write-Host '----Removing previous outdated packages list----'
+Write-Host '----Reserving previous outdated packages list----'
 if (Test-Path $file) {
-    Remove-Item $file
+    Move-Item $file $bakFile
 }
 
 Write-Host '----Upgrading pip----'
